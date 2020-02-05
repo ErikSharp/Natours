@@ -1,1 +1,6 @@
+# https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+
 node_modules
+
+# As we are using Sass, we don't want to track CSS files
+*.css
