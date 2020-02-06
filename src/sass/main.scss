@@ -2,6 +2,8 @@ $color-primary-light: #7ed56f;
 $color-primary: #55c57a;
 $color-primary-dark: #28b485;
 $color-grey-dark: #777;
+$color-black: #000;
+$color-white: #fff;
 
 //This is the only reset that he uses
 *,
@@ -39,7 +41,7 @@ body {
     height: 95vh;
     background-image: linear-gradient(
             to right bottom,
-            rgba($color-primary-light, 0.8),
+            rgba($color-primary-light, 0.4),
             rgba($color-primary-dark, 0.8)
         ),
         url(../img/hero.jpg);
@@ -53,34 +55,35 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     position: relative;
-}
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
+    // Interesting that & is actually being replaced with .header so this works
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
 
-.header__logo {
-    // The width will change automatically when setting the height
-    height: 3.5rem;
-}
+    &__logo {
+        // The width will change automatically when setting the height
+        height: 3.5rem;
+    }
 
-.header__text-box {
-    position: absolute;
-    // This is a very easy way to center something
-    // This is 40% of the parent element
-    top: 40%;
-    left: 50%;
-    // This is 50% of .text-box
-    transform: translate(-50%, -50%);
+    &__text-box {
+        position: absolute;
+        // This is a very easy way to center something
+        // This is 40% of the parent element
+        top: 40%;
+        left: 50%;
+        // This is 50% of .text-box
+        transform: translate(-50%, -50%);
 
-    // See the notes below for .btn
-    text-align: center;
+        // See the notes below for .btn
+        text-align: center;
+    }
 }
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
 
     // His animation in Safari had a little jump at the end and this fixes that
@@ -88,33 +91,33 @@ body {
     backface-visibility: hidden;
 
     margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-    // Block element take up all the width available to them
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
+    &--main {
+        // Block element take up all the width available to them
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
 
-    animation-name: moveRight;
-    animation-duration: 2s;
+        animation-name: moveRight;
+        animation-duration: 2s;
 
-    // other options
-    // animation-delay: 3s;
-    // animation-iteration-count: 3;
+        // other options
+        // animation-delay: 3s;
+        // animation-iteration-count: 3;
 
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
-    animation-timing-function: ease-in-out;
-}
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
+        animation-timing-function: ease-in-out;
+    }
 
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
 
-    animation: moveLeft 2s ease-in-out;
+        animation: moveLeft 2s ease-in-out;
+    }
 }
 
 @keyframes moveRight {
@@ -168,81 +171,83 @@ body {
     }
 }
 
-// psuedo classes are a special state of a selector
-// link is when it is a link that has not been visited before
-// here we have both so there is no difference in their styling
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    // vertical and horizontal
-    padding: 1.5rem 4rem;
-    border-radius: 999px;
-    display: inline-block;
-    transition: all 0.2s;
-    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
-    font-size: 1.6rem;
+.btn {
+    // psuedo classes are a special state of a selector
+    // link is when it is a link that has not been visited before
+    // here we have both so there is no difference in their styling
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        // vertical and horizontal
+        padding: 1.5rem 4rem;
+        border-radius: 999px;
+        display: inline-block;
+        transition: all 0.2s;
+        box-shadow: 0 0.5rem 0.5rem rgba($color-black, 0.3);
+        font-size: 1.6rem;
 
-    // This is so that our ::after element can have position: absolute;
-    position: relative;
+        // This is so that our ::after element can have position: absolute;
+        position: relative;
 
-    // CENTERING THE BUTTON
-    // This is one way to do it:
-    // position: absolute;
-    //left: 50%;
-    //transform: translateX(-50%);
+        // CENTERING THE BUTTON
+        // This is one way to do it:
+        // position: absolute;
+        //left: 50%;
+        //transform: translateX(-50%);
 
-    // Here's an easier way:
-    // because this element is inline-block it is treated as though it is text
-    // so all we have to do is set .text-box text-align to center
-}
+        // Here's an easier way:
+        // because this element is inline-block it is treated as though it is text
+        // so all we have to do is set .text-box text-align to center
+    }
 
-.btn:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
+    &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    }
 
-// This is for when we have clicked the button
-.btn:active {
-    // This is related to the intitial state
-    transform: translateY(-0.3rem);
-    box-shadow: 0 0.8rem 1rem rgba(0, 0, 0, 0.25);
-}
+    // This is for when we have clicked the button
+    &:active {
+        // This is related to the intitial state
+        transform: translateY(-0.3rem);
+        box-shadow: 0 0.8rem 1rem rgba($color-black, 0.25);
+    }
 
-.btn--white {
-    background-color: white;
-    color: $color-grey-dark;
-}
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+    }
 
-// This creates a virtual element after .btn that you can style
-.btn::after {
-    // You have to specify the content or nothing is going to appear
-    content: "";
-    display: inline-block;
+    // This creates a virtual element after .btn that you can style
+    &::after {
+        // You have to specify the content or nothing is going to appear
+        content: "";
+        display: inline-block;
 
-    // This will make it the same size as the button as this element is treated like a child of the .btn
-    height: 100%;
-    width: 100%;
-    border-radius: 999px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-}
+        // This will make it the same size as the button as this element is treated like a child of the &
+        height: 100%;
+        width: 100%;
+        border-radius: 999px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
 
-.btn--white::after {
-    background-color: white;
-}
+    .btn--white::after {
+        background-color: $color-white;
+    }
 
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
+    .btn:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
 
-.btn--animated {
-    animation: moveUp 0.5s ease-out 1s;
-    // This means that it will apply the styles of the 0% prior to running
-    // otherwise the button starts off visible
-    animation-fill-mode: backwards;
+    .btn--animated {
+        animation: moveUp 0.5s ease-out 1s;
+        // This means that it will apply the styles of the 0% prior to running
+        // otherwise the button starts off visible
+        animation-fill-mode: backwards;
+    }
 }
