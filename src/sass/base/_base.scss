@@ -1,0 +1,25 @@
+//This is the only reset that he uses
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+
+    // We have set box-sizing in the body, so everything else
+    // will now inherit that setting
+    box-sizing: inherit;
+}
+
+html {
+    // We make the base 10px to make the math easy - 1rem = 10px
+    // But, making in 10px here would mean that the user couldn't override
+    // By setting a percentage here, it takes from the browser value which
+    // by default is 16px unless the user overrides.
+
+    // This value represents the math to get to the equivalent 10px
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}

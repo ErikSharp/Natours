@@ -4,10 +4,10 @@
     "description": "The Natours website from https://www.udemy.com/course/advanced-css-and-sass",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",        
+        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "concurrently \"npm run compile:sass\" \"npm run live-server\"",
         "live-server": "live-server --open=./src/index.html --watch=src/index.html,src/css/style.css",
-        "compile:sass": "node-sass ./src/sass/main.scss ./src/css/style.css -w"
+        "compile:sass": "node-sass ./src/sass/main.scss ./src/css/style.css --watch=sass"
     },
     "keywords": [],
     "author": "",
