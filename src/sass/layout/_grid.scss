@@ -1,0 +1,60 @@
+.row {
+    //if the view width is < 114rem, it will be 100%
+    max-width: $grid-width;
+    background-color: #eee;
+
+    //this will center the block
+    margin: 0 auto;
+
+    //negate another psuedo class
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    //selects all elements that have a class attribute that starts with col-
+    //^ starts with
+    //* contains
+    //$ ends with
+    [class^="col-"] {
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2 {
+        // CSS calc can mix units
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+
+    .col-2-of-3 {
+        width: calc(
+            ((100% - 2 * #{$gutter-horizontal}) / 3) * 2 + #{$gutter-horizontal}
+        );
+    }
+
+    .col-2-of-4 {
+        width: calc(
+            ((100% - 3 * #{$gutter-horizontal}) / 4) * 2 + #{$gutter-horizontal}
+        );
+    }
+
+    .col-3-of-4 {
+        width: calc(
+            ((100% - 3 * #{$gutter-horizontal}) / 4) * 3 +
+                (#{$gutter-horizontal} * 2)
+        );
+    }
+}

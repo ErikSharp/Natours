@@ -1,0 +1,8 @@
+@mixin clearfix {
+    &::after {
+        //have to have this otherwise the psuedo element will not appear
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
