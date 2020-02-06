@@ -204,6 +204,11 @@ body {
     &:hover {
         transform: translateY(-0.5rem);
         box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
     }
 
     // This is for when we have clicked the button
@@ -216,6 +221,10 @@ body {
     &--white {
         background-color: $color-white;
         color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
     }
 
     // This creates a virtual element after .btn that you can style
@@ -235,16 +244,7 @@ body {
         transition: all 0.4s;
     }
 
-    .btn--white::after {
-        background-color: $color-white;
-    }
-
-    .btn:hover::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0;
-    }
-
-    .btn--animated {
+    &--animated {
         animation: moveUp 0.5s ease-out 1s;
         // This means that it will apply the styles of the 0% prior to running
         // otherwise the button starts off visible
