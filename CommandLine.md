@@ -12,3 +12,5 @@
 |`clear`|`cls`|clears the screen
 |`open hero.jpg`|`hero.jpg`|uses the associated program to open the file
 |`touch main.scss`||creates an empty file with that name
+
+In Mac you can open a new tab in the Terminal with Command T
