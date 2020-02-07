@@ -1,3 +1,7 @@
+# Resources
+
+http://codingheroes.io/resources/
+
 # How CSS works behind the scenes
 
 1. Load HTML
