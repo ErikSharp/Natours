@@ -1,7 +1,6 @@
 .row {
     //if the view width is < 114rem, it will be 100%
     max-width: $grid-width;
-    background-color: #eee;
 
     //this will center the block
     margin: 0 auto;
@@ -18,7 +17,6 @@
     //* contains
     //$ ends with
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child) {

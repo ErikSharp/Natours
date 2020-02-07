@@ -44,3 +44,32 @@ body {
         animation: moveLeft 2s ease-in-out;
     }
 }
+
+.heading-secondary {
+    display: inline-block;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    //how to put a gradient in text
+    background-image: linear-gradient(
+        to right,
+        $color-primary-light,
+        $color-primary-dark
+    );
+
+    //https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.2rem;
+
+    transition: all 0.2s;
+
+    &:hover {
+        //chaining multiple transforms
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        //           x      y      blur   color
+        text-shadow: 0.4rem 0.4rem 0.8rem rgba($color-black, 0.2);
+    }
+}
