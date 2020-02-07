@@ -12,7 +12,7 @@
         display: inline-block;
         transition: all 0.2s;
         box-shadow: 0 0.5rem 0.5rem rgba($color-black, 0.3);
-        font-size: 1.6rem;
+        font-size: $default-font-size;
 
         // This is so that our ::after element can have position: absolute;
         position: relative;
@@ -76,5 +76,30 @@
         // This means that it will apply the styles of the 0% prior to running
         // otherwise the button starts off visible
         animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+        transform: translateY(0);
     }
 }

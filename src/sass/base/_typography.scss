@@ -73,3 +73,18 @@ body {
         text-shadow: 0.4rem 0.4rem 0.8rem rgba($color-black, 0.2);
     }
 }
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+
+    //It's worth noting that this works even if there are other siblings of different types between the paragraphs
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}
