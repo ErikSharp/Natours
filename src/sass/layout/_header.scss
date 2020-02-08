@@ -13,6 +13,7 @@
     // This defines what will get kept
     // We are starting at the top left and then moving clockwise
     // https://bennettfeely.com/clippy/ for an easy way to create paths
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     position: relative;

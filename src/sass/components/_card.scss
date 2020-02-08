@@ -1,23 +1,27 @@
+$card-height: 52rem;
+
 .card {
     //this is basically how far away is your perspective (wide vs narrow)
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
     //both the card and card__side must have the same height
-    height: 50rem;
+    height: $card-height;
 
     &__side {
         font-size: 2rem;
 
         //both the card and card__side must have the same height
-        height: 50rem;
+        height: $card-height;
         transition: all 0.8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
-        border-radius: 3px;
+        border-radius: 0.5rem;
+        //This is to prevent the image overflowing the radius so we keep the border radius
+        overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
         &--front {
@@ -62,5 +66,78 @@
 
     &:hover &__side--back {
         transform: rotateY(0);
+    }
+
+    //Front side styling
+    &__picture {
+        background-size: cover;
+        //got this number through experimentation with the aspect of the photos
+        height: 23rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+
+        &--1 {
+            background-image: linear-gradient(
+                    to right,
+                    $color-secondary-light,
+                    $color-secondary-dark
+                ),
+                url(../img/nat-5.jpg);
+        }
+        &--2 {
+            background-image: url(../img/nat-5.jpg);
+        }
+        &--3 {
+            background-image: url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 3rem;
+        text-align: right;
+        width: 70%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+
+        //this is creating the same padding for the two lines that are created by wrapping with the width 70% above
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($color-secondary-light, 0.85),
+                rgba($color-secondary-dark, 0.85)
+            );
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 }
