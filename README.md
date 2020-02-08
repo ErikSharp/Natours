@@ -1,6 +1,9 @@
 # Resources
 
-http://codingheroes.io/resources/
+- http://codingheroes.io/resources/
+    - Author's page of resources
+- https://github.com/linea-io/Linea-Iconset
+    - There are html files that show what they look like
 
 # How CSS works behind the scenes
 
