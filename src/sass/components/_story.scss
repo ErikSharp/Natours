@@ -1,0 +1,50 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+    background-color: $color-white;
+    border-radius: 0.5rem;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        //I though that this would work, but it only does the text
+        //The reason is because you cannot apply multiple transforms and there is one more on the .store__shape below
+        //The one below is overwriting this one
+
+        //The solution is have this one just do the text and repeat this for the .story__shape
+
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        //shape-outside (below) only works if both width and height are specified
+        width: 15rem;
+        height: 15rem;
+        //shape-outside must be floated
+        float: left;
+        background-color: orangered;
+
+        //This is what the text will flow around
+        //50% (half the shape) is the radius
+        //at X (50%) Y (50%) - the center of the shape
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        //The best way to move floated elements is with transform
+        //Read the notes above as to why the skewX is here
+        transform: translateX(-3rem) skewX(12deg);
+    }
+
+    &__img {
+        height: 100%;
+    }
+
+    &__text {
+    }
+}
