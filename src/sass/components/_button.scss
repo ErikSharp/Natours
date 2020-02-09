@@ -54,6 +54,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     // This creates a virtual element after .btn that you can style
     &::after {
         // You have to specify the content or nothing is going to appear
