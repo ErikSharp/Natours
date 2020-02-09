@@ -1,13 +1,19 @@
+$zoom-transition-time: 0.3s;
+
 .story {
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
-    background-color: $color-white;
+    background-color: rgba($color-white, 0.6);
     border-radius: 0.5rem;
     padding: 6rem;
     padding-left: 9rem;
     font-size: $default-font-size;
     transform: skewX(-12deg);
+
+    &:not(:last-child) {
+        margin-bottom: 8rem;
+    }
 
     & > * {
         //I though that this would work, but it only does the text
@@ -20,12 +26,13 @@
     }
 
     &__shape {
+        position: relative;
+
         //shape-outside (below) only works if both width and height are specified
         width: 15rem;
         height: 15rem;
         //shape-outside must be floated
         float: left;
-        background-color: orangered;
 
         //This is what the text will flow around
         //50% (half the shape) is the radius
@@ -42,9 +49,40 @@
     }
 
     &__img {
+        //We are using height and not cover because we used an img tag and not
+        //CSS background-image
         height: 100%;
+        transition: all $zoom-transition-time;
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden; //for glitches
     }
 
-    &__text {
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        //initial state before the hover
+        transform: translate(-50%, 20%);
+        opacity: 0;
+        transition: all $zoom-transition-time;
+        //this is there to fix a small glitch in some browsers at the end of the animation
+        backface-visibility: hidden;
+
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba($color-black, 0.6);
+    }
+
+    &:hover &__caption {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(90%) saturate(150%);
     }
 }
