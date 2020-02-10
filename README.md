@@ -221,6 +221,7 @@ This is a naming strategy that has the following form:
 - A modifier would be something like `.btn__info--round` as it is just a different version
     - The modifier could also be directly on the block as `.btn--round` if necessary
 - Any multi-word name uses a hyphen such as `.btn__name-stats--round`
+- Event element should get a class
 
 # Physical Architecture
 ## The 7-1 Pattern
