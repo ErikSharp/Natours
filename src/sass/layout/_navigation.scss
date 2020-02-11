@@ -12,6 +12,9 @@
         right: 6rem;
         border-radius: 50%;
         z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+        text-align: center;
+        cursor: pointer;
     }
 
     &__background {
@@ -26,24 +29,28 @@
             $color-primary-dark
         );
         z-index: 1000;
-
-        transform: scale(70);
+        //https://easings.net/en
+        //https://cubic-bezier.com/#.17,.67,.83,.67
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     &__nav {
         height: 100vh;
         //Even though nav is a block element, this one is fixed, so we have to specify the width
-        width: 100%;
+        width: 0;
         position: fixed;
         top: 0;
         right: 0;
         z-index: 1500;
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     &__list {
         @include center-v-h;
         list-style: none;
         text-align: center;
+        width: 100%;
     }
 
     &__item {
@@ -82,5 +89,67 @@
             color: $color-primary;
             transform: translateX(1rem);
         }
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(70);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    &__icon {
+        position: relative;
+        margin-top: 3.4rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all 0.2s;
+        }
+
+        &::before {
+            top: -0.8rem;
+        }
+
+        &::after {
+            top: 0.8rem;
+        }
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        //makes the middle line go away
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
     }
 }
