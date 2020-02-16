@@ -241,3 +241,61 @@ This is a naming strategy that has the following form:
     1. `vendors/`
         - 3rd party CSS
 - 1 main Sass file to import all other files into compiled CSS
+
+# Responsive Design
+## Types
+### Desktop First
+This is the more traditional approach and an easier way to learn. You just write media queries to make the design fit into the smaller size. These queries utilize `max-width`.
+
+``` SCSS
+@media (max-width: 900px) {} //is width <= 900px?
+@media (max-width: 600px) {} //is width <= 600px?
+```
+
+With the example above, if the _actual_ width is 500px, then both the queries would apply. This means that if there are any conflicts then the last one wins. Media queries do **not** add any specificity and that is why media queries should always be kept at the end.
+
+### Mobile First
+The media query used here is `min-width`. This philosophy forces you to design with the bare essentials in mind and results in a smaller and faster product.
+
+``` SCSS
+@media (min-width: 600px) {} //is width >= 600px?
+@media (min-width: 900px) {} //is width >= 900px?
+```
+
+Pros
+* 100% optimised for the mobile experience
+* Reduces websites and apps to the absolute essentials
+* Results in smaller, faster and more efficient products
+* Prioritizes content over aesthetic desig, which may be desirable
+
+Cons
+* The desktop version might feel overly empty and simplistic
+* More difficult and counterintuitive to develop
+* Less creative freedom, making it more difficult to create distinctive products
+* Clients are used to see a desktop version of the site as a prototype
+* Do your users even use the mobile internet? What’s the purpose of your website?
+
+![Min and Max Width](/src/img/MinAndMaxWidth.png)
+
+## Breakpoints
+
+### The ways in which they are chosen
+
+1. The Bad
+    * They chosen by device width sizes
+    * Devices change over time
+    * Apple products are the ones that are usually chosen
+1. The Good
+    * Grouping all the different types of devices by their width
+    * https://gs.statcounter.com/screen-resolution-stats
+        * Be sure to click Edit Chart Data
+    * Based upon the stats at the time these were reasonable spots to put breakpoints
+        * 600px
+        * 900px
+        * 1200px
+        * 1800px
+1. The Perfect
+    * Ignoring devices and only being concerned with content
+
+### Creating Breakpoints
+

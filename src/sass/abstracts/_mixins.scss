@@ -13,3 +13,58 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+//Media queries
+/*
+0 - 600      Phone (max-width)
+601 - 900    Tablet portrait (max-width)
+901 - 1200   Tablet landscape (max-width)
+1201 - 1799  Default styles
+1800 +       Big desktop (min-width)
+*/
+
+//1em = 16px
+//It is recommended to state your media queries in em units which the default is gotten from the browser
+//It adapts to the font size that the user has the browser set to
+
+@mixin respond-phone {
+    @media (max-width: 37.5em) {
+        //600px / 16
+        @content;
+    }
+}
+@mixin respond-tab-port {
+    @media (max-width: 56.25em) {
+        //900px / 16
+        @content;
+    }
+}
+@mixin respond-tab-land {
+    @media (max-width: 75em) {
+        //1200px / 16
+        @content;
+    }
+}
+@mixin respond-big-desktop {
+    @media (min-width: 112.5em) {
+        //1800px / 16
+        @content;
+    }
+}
+
+//Below was his little media query manager
+//I don't see the point in using it as it doesn't shorten the code at all
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+// @mixin respond($breakpoint) {
+//     @if $breakpoint == phone {
+//         @media (max-width: 600px) {
+//             @content;
+//         }
+//     }
+// }

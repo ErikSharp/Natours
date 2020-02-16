@@ -17,7 +17,25 @@ html {
     // by default is 16px unless the user overrides.
 
     // This value represents the math to get to the equivalent 10px
-    font-size: 62.5%;
+    font-size: 62.5%; //1rem = 10px, 10 / 16 = 62.5%
+
+    //The rule for placing min-width is smallest to biggest
+    @include respond-big-desktop {
+        font-size: 75%; //1rem = 12px, 12 / 16 = 75%
+    }
+
+    //The rule for placing max-width is biggest to smallest
+    @include respond-tab-land {
+        font-size: 56.25%; //1rem = 9px, 9 / 16 = 56.25%
+    }
+
+    @include respond-tab-port {
+        font-size: 50%; //1rem = 8px, 8 / 16 = 50%
+    }
+
+    @include respond-phone {
+        font-size: 31.25%; //1rem = 5px, 5 / 16 = 31.25%
+    }
 }
 
 body {
